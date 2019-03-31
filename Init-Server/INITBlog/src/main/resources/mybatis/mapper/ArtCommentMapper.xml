@@ -1,0 +1,29 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhou.init.mapper.ArtCommentMapper">
+    <insert id="insert" parameterType="artComment">
+        insert into art_comment (bid, uid, pid, cid, content, time)
+          values( #{bid},#{uid}, #{pid}, #{cid}, #{content}, #{time})
+    </insert>
+
+    <select id="selectByBid" resultType="artComment" parameterType="integer">
+        select * from art_comment where bid = #{bid} and pid = 0
+    </select>
+
+    <select id="countByPid" resultType="integer">
+        select count(*) from art_comment
+            where pid = #{id}
+    </select>
+
+    <select id="selectByPid" resultType="artComment">
+        select * from art_comment
+            where pid = #{id}
+    </select>
+
+    <delete id="delete" parameterType="long">
+        delete from art_comment where id = #{id} or pid = #{id}
+    </delete>
+
+</mapper>

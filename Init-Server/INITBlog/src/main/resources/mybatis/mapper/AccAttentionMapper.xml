@@ -1,0 +1,42 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhou.init.mapper.AccAttentionMapper">
+
+        <insert id="add" parameterType="accAttention">
+            insert into acc_attention
+                values(#{uid}, #{aid})
+        </insert>
+
+        <delete id="delete" parameterType="accAttention">
+            delete from acc_attention
+                where uid = #{uid} and aid = #{aid}
+        </delete>
+
+        <select id="countFollow" parameterType="integer" resultType="integer">
+            select count(*) from acc_attention
+                where uid = #{uid}
+        </select>
+
+        <select id="countLike" parameterType="integer" resultType="integer">
+            select count(*) from acc_attention
+                where aid = #{aid}
+        </select>
+
+        <select id="checkFollow" parameterType="accAttention" resultType="integer">
+            select count(*) from acc_attention
+                where uid = #{uid} and aid = #{aid}
+        </select>
+
+        <select id="listFollow" parameterType="integer" resultType="integer">
+            select aid from acc_attention
+                where uid = #{uid}
+        </select>
+
+        <select id="listLike" parameterType="integer" resultType="integer">
+            select uid from acc_attention
+                where aid = #{uid}
+        </select>
+
+</mapper>

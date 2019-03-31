@@ -1,0 +1,38 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhou.init.mapper.ArtTagMapper">
+    <insert id="insert" parameterType="artTag">
+        insert into art_tag values (#{bid},#{name},#{status})
+    </insert>
+
+    <update id="update">
+        update art_tag set
+        <trim suffixOverrides=",">
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </trim>
+        where bid = #{bid}
+    </update>
+
+    <select id="selectByName" parameterType="integer" resultType="string">
+        select name from art_tag where bid = #{id}
+    </select>
+
+    <delete id="delete" parameterType="integer">
+        delete from art_tag where bid = #{id}
+    </delete>
+
+    <select id="selectName" resultType="string">
+         select name from art_tag where status = 1 LIMIT 0, 20
+    </select>
+
+    <select id="selectLikeName" parameterType="string" resultType="map">
+        select bid, name from art_tag where status = 1 and  name like #{name}
+    </select>
+
+</mapper>

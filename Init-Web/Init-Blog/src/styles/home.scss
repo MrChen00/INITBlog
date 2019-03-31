@@ -1,0 +1,78 @@
+.el-carousel__item:nth-child(2n) {
+    background-color:#d3dce6;
+ }
+ 
+ .el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+ }
+
+ /* it资讯 */
+ .ittop{
+   width: 100%; 
+   text-align:center; 
+   border-top: 3px solid cornflowerblue;
+   border-bottom: 1px solid rgba(0,0,0,0.1);
+ }
+ .itbottom{
+   width: 100%; 
+   text-align:center; 
+   margin-top: 15px; 
+   border-bottom: 3px solid cornflowerblue; 
+   padding-bottom: 15px;
+ }
+
+ .itArticle{
+   border-bottom: 1px solid rgba(0,0,0,0.1); 
+   padding-top: 4px; 
+   padding-bottom: 8px;
+   a{
+     font-size: 13px; 
+     color:black;
+     width: 100% ;
+     text-decoration: none;
+     
+   }:hover{
+     cursor: pointer;
+     color:cornflowerblue
+   }
+   span{
+     font-size: 13px;color: #999; width: 100%
+   }
+ }
+ .el-tabs__item{
+   font-size: 16px;
+ }
+
+ // 热门文章
+ .hotArticle{
+   border:0px; 
+   border-bottom: 1px solid rgba(0,0,0,0.1)
+ }
+ .hotArticle:hover{
+   background-color: rgba(0,0,0,0.1)
+ }
+ .hotArticleImg{
+   img{
+      margin-top: 15px;
+       width: 95%; 
+       max-height: 100px;
+       float:right;
+       border-radius: 3px
+   }
+ }
+ // 滚轮图样式
+ .el-carousel__container{
+     height: 450px;
+ }
+ @media screen and (max-width: 600px) {
+     .el-carousel__container{
+         height: 195px;
+     }
+ }
+
+ // 文本单行溢出
+ .textOverflow{
+     overflow:hidden;
+     text-overflow:ellipsis;
+     white-space:nowrap;
+ }

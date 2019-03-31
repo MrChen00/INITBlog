@@ -1,0 +1,30 @@
+.article{
+    margin-bottom: 8px;
+}
+.title{
+    width: 90%; 
+    overflow: hidden; 
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    &:hover{
+        cursor: pointer;
+        transition-duration: 0.5s;
+        color:aquamarine
+    }
+}
+.contentShort {
+    width: 90%; 
+    font-size: 14px; 
+    color: #999; 
+    overflow: hidden; 
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.deleteCollect{
+    width: 0px;
+    height: 0px;
+    font-size: 19px;
+    position: relative;
+    bottom: 18px;
+    left: 95%;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhou.init.mapper.ArtCollectMapper">
+
+
+    <insert id="insert" parameterType="artCollect">
+        insert into art_collect
+            values(#{uid}, #{bid})
+    </insert>
+
+    <delete id="delete" parameterType="artCollect">
+        delete from art_collect
+            where uid = #{uid} and bid = #{bid}
+    </delete>
+
+    <select id="count" parameterType="integer" resultType="integer">
+        select count(*) from art_collect
+            where bid = #{bid}
+    </select>
+
+    <select id="listArticle" parameterType="integer" resultType="blogArticle">
+        select uid, id, title, contentShort from blog_article where id in (select bid from art_collect where uid = #{uid})
+    </select>
+
+</mapper>

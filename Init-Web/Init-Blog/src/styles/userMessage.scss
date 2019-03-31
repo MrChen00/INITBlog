@@ -1,0 +1,45 @@
+.message{
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    img{
+            border-radius: 20px;
+            width: 25px;
+            height: 25px;
+    }
+    & div:nth-child(1){
+        span{
+            font-size: 13px;
+        }
+    }
+    & div:nth-child(2){
+        span>span{
+            color: #999; 
+            font-size: 13px;
+        }
+        p{
+            font-size: 12px; 
+            color: #999; 
+            float:right; 
+            margin-top: -16px;
+        }
+    }
+}
+.messages{
+    .message:last-child{
+        border-bottom: 0px;
+        padding-bottom: 20px;
+    }
+    
+}
+
+
+.item {
+  position: relative;
+  width: 0px;
+  height: 0px;
+  left: 72px;
+}

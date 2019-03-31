@@ -1,0 +1,77 @@
+*{
+    font-family: PingFang SC
+}
+// 重写确认框样式
+.el-message-box{
+    width: 360px;
+}
+
+.detail-container{
+    
+}
+
+.articleDetail{
+    width: 100%;
+}
+.header{
+    width: 100%;
+    height: 100px;
+    // padding-top: 0px;
+    // border: 1px solid red
+}
+// 文章内部样式
+.content{
+    margin-top: 30px;
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Microsoft YaHei','SF Pro Display',Roboto,Noto,Arial,'PingFang SC',sans-serif
+}
+
+@media screen and (max-width: 600px) {
+     .title{
+         font-size: 18px;
+         font-weight: 500;
+     }
+     .content{
+        width: 100%;
+        font-size: 16px;
+    }
+ }
+
+ @media screen and (max-width: 600px) {
+
+
+    .user-container{
+        padding: 0px;
+        height: 140px;
+        
+        margin-bottom: -15px
+    }
+    .hportrait{
+        width: 40px;
+        height: 40px;
+        margin-left: 24px
+    }
+    .el-card{
+        border: 0px;
+        box-shadow: 0px;
+        
+    }
+    .context{
+        .el-card__body{
+            padding: 0px;
+            // margin-top: -20px;
+        }
+    }
+    
+
+  }
+
+  // 文章底部信息
+  .articleBottom{
+      span{
+          font-size: 13px; 
+          color: #333;
+          float:right
+      }
+  }

@@ -1,0 +1,91 @@
+// 用户容器
+.user-container{
+    h4:hover{
+        cursor: pointer;
+        color:aquamarine;
+    }
+}
+
+.detail-container{
+    // border: 1px solid #999
+}
+.articleDetail{
+    width: 100%;
+}
+.header{
+    width: 100%;
+    height: 100px;
+    // padding-top: 0px;
+    // border: 1px solid red
+    
+}
+// 文章
+.content{
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Microsoft YaHei','SF Pro Display',Roboto,Noto,Arial,'PingFang SC',sans-serif
+}
+// 用户关注信息
+.userFollow{
+    width: 100%; 
+    float:left; 
+    height: 50px; 
+    padding-top: 18px;
+    div{
+        width: 30%; text-align:center;float:left;
+    }
+}
+// 发布时间
+.publishTime{
+    float:right; 
+    font-size: 13px; 
+    color: #999
+}
+
+ @media screen and (max-width: 600px) {
+     .title{
+         font-size: 19px;
+         font-weight: 500;
+     }
+     .content{
+        width: 100%;
+        font-size: 16px;
+    }
+ }
+// 用户头像/昵称
+.userNickName{
+    h4{
+        float:left; 
+        margin-left: 15px;
+        line-height: 10px
+    }
+}
+
+// 头像
+.hportrait{
+    border-radius: 50%; 
+    width: 70px; 
+    height: 70px;
+}
+
+@media screen and (max-width: 600px) {
+
+
+    .user-container{
+        padding: 0px;
+        height: 140px;
+        
+        margin-bottom: -15px
+    }
+    .hportrait{
+        width: 40px;
+        height: 40px;
+        margin-left: 24px
+    }
+    .el-card{
+        border: 0px;
+        box-shadow: 0px;
+        
+    }
+
+  }

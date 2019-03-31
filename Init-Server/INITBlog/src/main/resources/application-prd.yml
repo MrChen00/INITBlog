@@ -1,0 +1,57 @@
+# 端口号和项目根路径
+server:
+  port: 8018
+  servlet:
+    context-path: /initblog
+# 编码设置
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+  # 数据库和连接池配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.107.82.119:3306/initblog?useAffectedRows=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
+  # 邮件配置
+  mail:
+    username: 13677495631@163.com
+    password: zhouyu20020303
+    host: smtp.163.com
+    properties.mail.smtp.ssl.enable: true
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+  redis:
+    host: 39.107.82.119
+    port: 6379
+    password: zhouyu2002
+
+# MyBatis Mapper配置文件
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  type-aliases-package: com.zhou.init.pojo
+
+aliyun:
+  # 对象存储
+  oss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    accessKeyId: LTAIsNuPe8M3QqXf
+    accessKeySecret: Y518AU4lRs0BsW19u5NJsYIGw0Mawd
+    bucketName: init-blog-oss
+
+#  configuration:
+#    use-generated-keys: true
+
+# JSON 格式化时间
+#jsckson:
+#  time-zone: GMT+8
+#  date-format: yyyy-MM-dd HH:mm:ss
+
+#logging:
+#  level:
+#    com.zhou.init.mapper: debug
+
+
+
+

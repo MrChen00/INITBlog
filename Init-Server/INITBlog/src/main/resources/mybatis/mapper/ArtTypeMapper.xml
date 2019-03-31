@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhou.init.mapper.ArtTypeMapper">
+
+    <insert id="insert" parameterType="artType">
+        insert into art_type(uid,name,createTime) values(#{uid},#{name},#{createTime})
+    </insert>
+
+    <select id="selectByUid" resultType="artType" parameterType="integer">
+        select * from art_type where uid = #{id}
+    </select>
+</mapper>

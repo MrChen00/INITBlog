@@ -1,0 +1,97 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhou.init.mapper.BlogArticleMapper">
+
+    <insert id="insert" parameterType="blogArticle" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+        insert into blog_article (uid, title, cover, contentShort, content, contentMd,createTime,
+        <if test="publishTime != null">
+          publishTime,
+        </if> tid, status)
+        values(#{uid},#{title},#{cover},#{contentShort},#{content},#{contentMd},#{createTime},
+        <if test="publishTime != null">
+          #{publishTime},
+        </if>
+        #{tid},#{status})
+
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+            SELECT LAST_INSERT_ID() as id
+        </selectKey>
+
+    </insert>
+
+    <update id="update">
+        update blog_article set
+          title = #{title},
+          cover = #{cover},
+          contentShort = #{contentShort},
+          content = #{content},
+          contentMd = #{contentMd},
+        <if test="publishTime != null">
+            publishTime = #{publishTime},
+        </if>
+          tid = #{tid},
+          status = #{status}
+
+          where id = #{id}
+    </update>
+
+    <update id="updateCover">
+        update blog_article set
+          cover = #{coverUrl}
+            where id = #{id}
+    </update>
+
+    <update id="updateContentAndMd">
+        update blog_article set
+          content = #{content} ,
+          contentMd = #{contentMd}
+            where id = #{id}
+    </update>
+
+    <select id="selectByID" parameterType="integer" resultType="blogArticle">
+        select * from blog_article where id = #{id}
+    </select>
+
+    <select id="countByTid" parameterType="integer" resultType="integer">
+        select count(*) from blog_article where tid = #{id}
+    </select>
+
+    <select id="selectByTid" parameterType="integer" resultType="blogArticle">
+        select
+          uid, id, title, cover, contentShort, pageViews, likes, createTime, publishTime, status
+          from blog_article where tid = #{tid}
+    </select>
+
+    <delete id="delete" parameterType="integer">
+        delete from blog_article where id = #{id}
+    </delete>
+
+    <select id="grabById" parameterType="int" resultType="map">
+        select uid, id, title, cover, contentShort, tid from blog_article
+            where id = #{id} and status = 1
+    </select>
+
+    <update id="updateByViewsOrLikes" parameterType="integer">
+        update blog_article set
+              <!--<if test="map.pageViews != null">-->
+                    pageViews = pageViews + 1
+              <!--</if>-->
+              where id = #{id}
+    </update>
+
+    <select id="selectHotArticle" resultType="map">
+        select uid, id, title, cover, contentShort, tid from blog_article where status = 1  order by pageViews desc LIMIT 0, 5
+    </select>
+
+    <update id="updateLike" parameterType="integer">
+        update blog_article set
+              likes = likes + 1
+              where id = #{id}
+    </update>
+
+    <select id="selectLikeTitle" parameterType="string" resultType="map">
+        select uid, id, title from blog_article where title like #{title}
+    </select>
+
+</mapper>

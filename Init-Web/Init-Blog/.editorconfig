@@ -1,0 +1,11 @@
+# 编码规范
+root = true
+
+# 对所有文件应用下面的规则
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
