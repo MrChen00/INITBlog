@@ -32,6 +32,8 @@ import Router from 'vue-router'
 // // 异常处理
 // import error from '@/views/error/article/404'
 
+// 搜索
+// @/views/search
 
 // // 查看非当前用户的信息
 
@@ -132,6 +134,16 @@ export default new Router({
         },{
           path: '/:id',
           component: () => import('@/views/users')
+        }
+      ]
+    },{
+      path: '/search',
+      name: 'search',
+      component: Layout,
+      children: [
+        {
+          path: '/search/init',
+          component: () => import('@/views/search')
         }
       ]
     }

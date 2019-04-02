@@ -5,7 +5,6 @@
           <el-col :xs="0" :sm="3">
               <br/>
           </el-col>
-        // 测试表情啊
           <el-col :xs="24" :sm="12">
               <el-carousel :interval="2200" arrow="never"  >
                 <el-carousel-item v-for="item in homeImg" :key="item" >
