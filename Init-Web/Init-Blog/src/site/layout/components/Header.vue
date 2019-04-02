@@ -301,17 +301,19 @@ import { getUser, listLikeName } from '@/api/home'
           //     this.user = resp.data.data
           //     this.checkLog = true
           // })
-          // 获取消息数量
-          getCountMessage(this.$store.getters.user).then(resp => {
-              this.countMessage = resp.data.data.count
-          })
+         
         },
         watch: {
           // 监听登录变化实时调整
           '$store.getters.user': function(val, old){
               if(val){
+                // 获取用户信息 
                 getUser(val).then(resp => {
                     this.user = resp.data.data
+                })
+                // 获取消息数量
+                getCountMessage(val).then(resp => {
+                    this.countMessage = resp.data.data.count
                 })
                 this.checkLog = true
               }
