@@ -2,10 +2,10 @@
 <template>
 <div>
  <el-row>
-    <el-col :xs="0" :sm="8">
+    <el-col :xs="0" :sm="3">
         <br/>
     </el-col>
-    <el-col :xs="24" :sm="13"  class="context" >
+    <el-col :xs="24" :sm="18"  class="context" >
     <el-card shadow="always">
     <div class="detail-container">
         <!-- query 传参接收 
@@ -21,8 +21,11 @@
                         <el-tag v-for="(item) in tags" :key="item" size="small" style="margin-left: 3px">
                             {{ item }}
                         </el-tag>
-                        <el-button type="text" @click="editArticle">编辑</el-button>
-                        <el-button type="text" @click="deleteArticle">删除</el-button>
+                        <div style="float:right; ">
+                            <el-button  @click="editArticle" size="medium" >编辑</el-button>
+                            <el-button @click="deleteArticle" size="medium" >删除</el-button>
+                            &nbsp;&nbsp;
+                        </div>
                     </div>
                     <div class="content">
                         <div id="content"></div>
@@ -129,7 +132,7 @@ export default {
                         item.style.width = "100%"
                         item.style.margin="2px"
                         item.style.maxWidth = "600px"
-                        item.style.maxHeight = "700px"
+                        item.style.maxHeight = "1000px"
                     })
                 }else{
                     // 错误跳转

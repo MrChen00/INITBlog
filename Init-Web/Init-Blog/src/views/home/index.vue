@@ -19,21 +19,23 @@
                         <el-row style="width: 100%">
                           <el-col :xs="12" :sm="19">
                               <div>
-                                <h4 class="textOverflow" 
-                                  @click="showDetail(item.id, item.uid)">{{ item.title }}</h4>
-                                <p class="textOverflow"  style="font-size: 13px;" >
-                                    {{ item.contentShort }}</p>
+                                <div @click="showDetail(item.id, item.uid)" style="cursor: pointer">
+                                  <h4 class="textOverflow" 
+                                    @click="showDetail(item.id, item.uid)">{{ item.title }}</h4>
+                                  <p class="textOverflow"  style="font-size: 13px;" >
+                                      {{ item.contentShort }}</p>
+                                </div>
                                 <div @click="showUser(item.uid)" 
                                     style="cursor: pointer; float:left; margin-bottom: 16px;">
                                     <img :src="item.hportrait" 
-                                      style="width: 25px; height: 25px; border-radius: 20px;" />
-                                    <span style="font-size: 12px;">{{ item.nickname }}</span>
+                                      style="width: 25px; height: 25px; border-radius: 20px; position: relative; top: 15px" />
+                                    <span style="font-size: 13px;position: relative; top: 8px ">{{ item.nickname }}</span>
                                 </div>
                               </div>
                             </el-col>
                             <el-col :xs="12" :sm="5">
                               <div class="hotArticleImg">
-                                <img :src="item.cover" />
+                                <img :src="item.cover" @click="showDetail(item.id, item.uid)" />
                               </div>
                             </el-col>
                         </el-row>
@@ -173,4 +175,5 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss">
   @import '~@/styles/home.scss'
+  
 </style>

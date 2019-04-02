@@ -14,7 +14,7 @@
                         <router-link to="/" tag="div" class="router-div">首页</router-link>
                         <router-link to="/" tag="div" class="router-div">IT 资讯</router-link>
                         <router-link to="/" tag="div" class="router-div">标签</router-link>
-                        <router-link to="/" tag="div" class="router-div">关于本站</router-link>
+                        <router-link to="/230/article/25" tag="div" class="router-div">关于本站</router-link>
                   </span>
                    <!-- 搜索 -->
                     <div v-if="checkSearch" class="checkSearch" >
