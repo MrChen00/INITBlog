@@ -17,7 +17,7 @@
                         <router-link to="/230/article/25" tag="div" class="router-div">关于本站</router-link>
                   </span>
                    <!-- 搜索 -->
-                    <div v-if="checkSearch" class="checkSearch" >
+                    <!-- <div v-if="checkSearch" class="checkSearch" >
                         <el-autocomplete
                           popper-class="my-autocomplete"
                           v-model="state3"
@@ -31,8 +31,8 @@
                           class="el-icon-search"
                           slot="suffix"
                           @click="handleIconClick" ></i>
-                          <!-- 搜索模板 -->
-                          <template slot-scope="{ item }">
+                           搜索模板 -->
+                          <!-- <template slot-scope="{ item }">
                               <div v-if="item.type == 'User'">
                                 <div class="name" @click="detailUser(item.id)">  {{ item.nickname }}</div>
                               </div>
@@ -46,13 +46,15 @@
                               </div>
                           </template>
                         </el-autocomplete>
-                    </div>
+                    </div> --> 
                   <!-- 用户登录权限 -->
                   <div v-if="checkLog" class="login-container">
-                      <div @click="checkSearch=!checkSearch">
-                          <i class="el-icon-search"></i>
-                          搜索
-                      </div>
+                     
+                        <router-link to="/search/init" tag="div">
+                            <i class="el-icon-search"></i>
+                            搜索
+                        </router-link>
+                      
                       <router-link to="/article/create" tag="div">
                             <i class="el-icon-edit"></i> 写文章
                       </router-link>
@@ -84,12 +86,12 @@
                     </el-dropdown>
                   </div>
                   <div v-else class="loginRegister">
-                      <div @click="checkSearch=!checkSearch"> 
-                          <img src="@/assets/home/search.png"/>
-                          <div>
-                            搜索
-                          </div>
-                      </div> 
+                      <router-link to="/search/init" tag="div">
+                            <img src="@/assets/home/search.png"/>
+                              <div>
+                                搜索
+                              </div>
+                      </router-link>
                       <router-link to="/login" tag="div"> 
                           <img src="@/assets/home/login.png"/>
                           <div>
@@ -108,7 +110,7 @@
           </el-col>
                 <el-col :xs="20" :sm="0" >
                     <!-- 搜索 -->
-                    <div v-if="checkSearch" class="checkSearch" >
+                    <!-- <div v-if="checkSearch" class="checkSearch" >
                         <el-autocomplete
                           popper-class="my-autocomplete"
                           v-model="state3"
@@ -122,8 +124,8 @@
                           class="el-icon-search"
                           slot="suffix"
                           @click="handleIconClick" ></i>
-                          <!-- 搜索模板 -->
-                          <template slot-scope="{ item }">
+                         搜索模板 -->
+                          <!-- <template slot-scope="{ item }">
                               <div v-if="item.type == 'User'">
                                 <div class="name" @click="detailUser(item.id)">  {{ item.nickname }}</div>
                               </div>
@@ -135,7 +137,7 @@
                               </div>
                           </template>
                         </el-autocomplete>
-                    </div>
+                    </div> -->
 
                     <!-- 小型设备展示 -->
                   <div style="float:right; margin-right: 20px; margin-top: -10px">
@@ -165,10 +167,10 @@
                               </router-link>
                             </el-dropdown-item>
                             <el-dropdown-item > 
-                              <div @click="checkSearch=!checkSearch"> 
+                              <router-link to="/search/init" tag="div">
                                 <i class="el-icon-search" ></i> 
                                 &nbsp;搜索 
-                              </div>
+                              </router-link>
                             </el-dropdown-item>
                             <el-dropdown-item> 
                               <i class="el-icon-upload2"></i> 
@@ -177,8 +179,10 @@
                         </div>
                         <div v-else>
                         <el-dropdown-item > 
-                          <i class="el-icon-search" @click="checkSearch=!checkSearch"></i> 
-                          &nbsp;搜索
+                          <router-link to="/search/init" tag="div">
+                            <i class="el-icon-search" ></i> 
+                            &nbsp;搜索
+                          </router-link>
                         </el-dropdown-item>
                         <el-dropdown-item> 
                           <router-link to="/login" tag="div">
@@ -253,9 +257,6 @@ import { getUser, listLikeName } from '@/api/home'
                 ]
               cb(vals)
             }
-
-           
-           
           },
           createFilter(queryString) {
             return (restaurant) => {
@@ -297,11 +298,11 @@ import { getUser, listLikeName } from '@/api/home'
         mounted() {
           // 赋值到定义的数组中
           this.restaurants = this.loadAll()
-          // getUser(this.$store.getters.user).then(resp => {
-          //     this.user = resp.data.data
-          //     this.checkLog = true
-          // })
-         
+          // 获取用户信息
+          getUser(this.$store.getters.user).then(resp => {
+              this.user = resp.data.data
+              this.checkLog = true
+          })
         },
         watch: {
           // 监听登录变化实时调整

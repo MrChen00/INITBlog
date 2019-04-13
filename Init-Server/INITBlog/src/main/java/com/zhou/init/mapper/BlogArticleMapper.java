@@ -41,10 +41,17 @@ public interface BlogArticleMapper {
 
     /**
      * 分类文章ID
-     * @param tid
+     * @param tid 分类ID
      * @return
      */
     List<BlogArticle> selectByTid(Integer tid);
+
+    /**
+     * 文章ID查询用户ID
+     * @param id 文章ID
+     * @return
+     */
+    Integer selectById(Integer id);
 
     /**
      * 删除文章

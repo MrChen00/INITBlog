@@ -11,21 +11,27 @@ spring:
   # 数据库和连接池配置
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/initblog?useAffectedRows=true&serverTimezone=GMT%2B8
-    username: root
-    password: root
+    # url: 数据库URL 
+    # username: 用户名
+    # password: 密码
   # 邮件配置
   mail:
-    username: 13677495631@163.com
-    password: zhouyu20020303
-    host: smtp.163.com
+    # username: 邮箱名
+    # password: 密码
+    # host: 
     properties.mail.smtp.ssl.enable: true
   mvc:
     date-format: yyyy-MM-dd HH:mm:ss
+  # 配置 Redis
   redis:
     host: 127.0.0.1
-    port: 6379
-    password: 123
+    # port: Reids 端口
+    # password: 密码
+  # 配置 Elasticsearch
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 127.0.0.1:9300
 
 
 # MyBatis Mapper配置文件
@@ -44,10 +50,11 @@ mybatis:
 aliyun:
   # 对象存储
   oss:
-    endpoint: oss-cn-beijing.aliyuncs.com
-    accessKeyId: LTAIsNuPe8M3QqXf
-    accessKeySecret: Y518AU4lRs0BsW19u5NJsYIGw0Mawd
-    bucketName: init-blog-oss
+    # endpoint: 地域
+    # accessKeyId: key
+    # accessKeySecret: pwd
+    # bucketName: name
+
 
 # Redis配置
 #redis:

@@ -11,21 +11,27 @@ spring:
   # 数据库和连接池配置
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://39.107.82.119:3306/initblog?useAffectedRows=true&serverTimezone=GMT%2B8
-    username: root
-    password: root
+    # url: 
+    # username: 
+    # password: 
   # 邮件配置
   mail:
-    username: 13677495631@163.com
-    password: zhouyu20020303
-    host: smtp.163.com
+    # username: 
+    # password: 
+    # host: 
     properties.mail.smtp.ssl.enable: true
   mvc:
     date-format: yyyy-MM-dd HH:mm:ss
   redis:
-    host: 39.107.82.119
-    port: 6379
-    password: zhouyu2002
+    # host: 
+    # port: 
+    # password: 
+  # 配置 Elasticsearch
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      # cluster-nodes: 
+
 
 # MyBatis Mapper配置文件
 mybatis:
@@ -35,10 +41,10 @@ mybatis:
 aliyun:
   # 对象存储
   oss:
-    endpoint: oss-cn-beijing.aliyuncs.com
-    accessKeyId: LTAIsNuPe8M3QqXf
-    accessKeySecret: Y518AU4lRs0BsW19u5NJsYIGw0Mawd
-    bucketName: init-blog-oss
+    # endpoint: 地域
+    # accessKeyId: key
+    # accessKeySecret: pwd
+    # bucketName: name
 
 #  configuration:
 #    use-generated-keys: true
@@ -48,9 +54,9 @@ aliyun:
 #  time-zone: GMT+8
 #  date-format: yyyy-MM-dd HH:mm:ss
 
-logging:
-  level:
-    com.zhou.init.mapper: debug
+#logging:
+#  level:
+#    com.zhou.init.mapper: debug
 
 
 

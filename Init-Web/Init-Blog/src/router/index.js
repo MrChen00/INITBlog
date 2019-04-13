@@ -137,6 +137,7 @@ export default new Router({
         }
       ]
     },{
+      // 搜索
       path: '/search',
       name: 'search',
       component: Layout,

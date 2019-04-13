@@ -29,15 +29,7 @@
                             </div>
                         </div>
                     </el-card>
-                        <div style="margin-top: 15px">
-                            <el-card shadow="always" style="border-radius: 30px;">
-                                <h4>其他信息</h4>
-                                <p>姓名: {{ profile.realName }}</p>
-                                <p>性别: {{ profile.sex }}</p>
-                                <p>地区: 暂时没有</p>
-                                <p>职位：{{ profile.post }}</p>
-                            </el-card>
-                        </div>
+                       
                 </div>
             </el-col>
             <el-col :sm="12">
@@ -68,6 +60,15 @@
                 </div>
             </el-col>
             <el-col :sm="5" >
+                 <div style="margin-top: 15px">
+                            <el-card shadow="always" style="border-radius: 30px;">
+                                <h4>其他信息</h4>
+                                <p>姓名: {{ profile.realName }}</p>
+                                <p>性别: {{ profile.sex }}</p>
+                                <p>地区: 暂时没有</p>
+                                <p>职位：{{ profile.post }}</p>
+                            </el-card>
+                        </div>
                 <div style="margin-top: 15px">
                     <el-card shadow="always" style="border-radius: 30px;">
                         <h4>推荐内容</h4>

@@ -94,4 +94,8 @@
         select uid, id, title from blog_article where title like #{title}
     </select>
 
+    <select id="selectById" parameterType="integer" resultType="integer">
+        select uid from blog_article where id = #{id}
+    </select>
+
 </mapper>

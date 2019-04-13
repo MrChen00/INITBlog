@@ -7,6 +7,7 @@ import com.zhou.init.dto.StatusCode;
 import com.zhou.init.enums.ResultEnums;
 import com.zhou.init.pojo.UserAccount;
 import com.zhou.init.service.AccProfileService;
+import com.zhou.init.service.SearchService;
 import com.zhou.init.service.UserAccountService;
 import com.zhou.init.utils.PhotoCompression;
 import com.zhou.init.utils.SendEmail;
@@ -48,6 +49,9 @@ public class LoginController {
 
     @Autowired
     AliyunOSSConfig aliyunOSSConfig;
+
+    @Autowired
+    SearchService searchService;
 
     /**
      * 用户登录
@@ -110,6 +114,10 @@ public class LoginController {
             user.setEmail(username);
             user.setPassword(result.toString());
             userAccountService.addUserAccount(user);
+            // 保存到ES
+            UserAccount byName = userAccountService.getByName(username);
+            com.zhou.init.search.UserAccount userAccount = new com.zhou.init.search.UserAccount();
+            searchService.addUser(userAccount.getId());
 
             return new Result(StatusCode.SUCCESS, ResultEnums.SUCCESS);
         }catch (Exception ex){
@@ -201,6 +209,8 @@ public class LoginController {
         try {
             // 密码修改需要加密
             userAccountService.updateBasic(map);
+            // 更新ES索引库
+            searchService.addUser(Integer.parseInt(map.get("id").toString()));
             return new Result(StatusCode.SUCCESS, ResultEnums.SUCCESS);
         }catch (Exception ex){
             return new Result(StatusCode.ERROR, ResultEnums.ERROR);

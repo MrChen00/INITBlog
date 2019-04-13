@@ -1,14 +1,11 @@
-package com.zhou.elasticsearch.repository;
+package com.zhou.init.repository;
 
-import com.zhou.elasticsearch.pojo.UserAccount;
+import com.zhou.init.search.UserAccount;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;
 
-/**
- * @Author: ZHOU
- * @Date: 2019/4/11 15:56
- */
+
 public interface UserAccountRepository extends ElasticsearchRepository<UserAccount, Integer> {
 
     /**

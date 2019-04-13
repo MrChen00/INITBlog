@@ -27,10 +27,8 @@ Vue.config.productionTip = false;
 Vue.http.options.emulateJSON = true;
 
 import Cookies from 'vue-cookies'
-Vue.use(Cookies)
 
 store.commit("SET_USER", Cookies.get("token"))
-
 
 new Vue({
   el: '#app',

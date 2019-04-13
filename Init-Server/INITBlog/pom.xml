@@ -121,7 +121,11 @@
             <version>2.1.2.RELEASE</version>
         </dependency>
 
-
+        <!--Spring Data ElasticSearch-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
 
     </dependencies>
 

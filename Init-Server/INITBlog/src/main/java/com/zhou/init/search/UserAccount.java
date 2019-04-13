@@ -1,4 +1,4 @@
-package com.zhou.elasticsearch.pojo;
+package com.zhou.init.search;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -10,6 +10,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  * 结合使用的
  *  shards 分片是针对集群的 我们只有一台服务器所以就1个
  *  replicas 副本就是对该索引库的副本, 当主分片挂了就用副本来处理.
+ *  用户
  * @author ZHOU
  * @create 2019-04-11 15:49
  */

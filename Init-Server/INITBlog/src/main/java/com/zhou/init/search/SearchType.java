@@ -1,4 +1,4 @@
-package com.zhou.elasticsearch.pojo;
+package com.zhou.init.search;
 
 /**
  * 查询类型
@@ -7,16 +7,23 @@ package com.zhou.elasticsearch.pojo;
  */
 public enum SearchType {
 
-    ARTICLE("博客"),
-    TAG("标签"),
-    USER("用户");
+    All("All", "全部"),
+    ARTICLE("ARTICLE", "博客"),
+    TAG("TAG", "标签"),
+    USER("USER", "用户");
 
+    String key;
     String value;
 
-    SearchType(String value){
+
+    SearchType(String key, String value){
+        this.key = key;
         this.value = value;
     }
 
+    public String getKey() {
+        return key;
+    }
     public String getValue() {
         return value;
     }

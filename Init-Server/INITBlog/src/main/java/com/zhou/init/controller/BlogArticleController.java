@@ -1,24 +1,17 @@
 package com.zhou.init.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.zhou.init.config.AliyunOSSConfig;
 import com.zhou.init.dto.Result;
 import com.zhou.init.dto.StatusCode;
 import com.zhou.init.enums.ResultEnums;
 import com.zhou.init.pojo.BlogArticle;
-import com.zhou.init.pojo.Message;
 import com.zhou.init.pojo.MultipartFileTS;
 import com.zhou.init.service.ArtTagService;
 import com.zhou.init.service.BlogArticleService;
+import com.zhou.init.service.SearchService;
 import com.zhou.init.utils.PhotoCompression;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import redis.clients.jedis.Jedis;
 
 import java.io.InputStream;
 import java.util.*;
@@ -37,6 +30,8 @@ public class BlogArticleController {
     ArtTagService artTagService;
     @Autowired
     AliyunOSSConfig aliyunOSSConfig;
+    @Autowired
+    SearchService searchService;
 
     // JSoup爬取img
 //    @RequestMapping("/testImg")
@@ -126,6 +121,8 @@ public class BlogArticleController {
     public Result update(@RequestBody BlogArticle blogArticle){
         try{
             blogArticleService.update(blogArticle);
+            // 修改ES索引库数据
+            searchService.addArticle(blogArticle.getId());
             return new Result(StatusCode.SUCCESS, ResultEnums.SUCCESS);
         }catch (Exception ex){
             ex.printStackTrace();
@@ -195,7 +192,8 @@ public class BlogArticleController {
                 @Override
                 public void run() {
                     blogArticleService.updateContentAndMd(Integer.parseInt(list.get(0)), list.get(2), list.get(1));
-
+                    // 保存到ES中
+                    searchService.addArticle(Integer.parseInt(list.get(0)));
                     // 如果有图片, 这里就是最后一步了
 
                     if(MultipartFileTS.getInstance().getId() != null){
@@ -203,6 +201,8 @@ public class BlogArticleController {
                     }
                 }
             }).start();
+
+
             return new Result(StatusCode.SUCCESS, ResultEnums.SUCCESS);
         }catch (Exception ex){
             ex.printStackTrace();
